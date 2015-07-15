@@ -1,7 +1,7 @@
 ; Author: CommanderJeb
 ; Version: 0.0.0
 ; Date: 07/13/2015
-; Last Update:
+; Last Update: 7/15/2015
 
 #include <File.au3>
 
@@ -26,8 +26,14 @@ For $i = 1 to $lineCount Step 1 ;Run through all the files, one by one for the f
 
    Local $fileName = FileReadLine($iniFile,$i)
 ;~    Local $command = ('siac renter upload ' & $filePathToUpload & $fileName & ' ' & $fileName)
-   RunWait(@ComSpec & " /c " & "C:\Users\%username%\Desktop\Mining\Siacoin\3.3.3\win64\resources\app\Sia\" & 'siac renter upload "F:\UnSorted MotoX Pictures\DCIM\Camera\' & $fileName & '" ' & $fileName)
-   ConsoleWrite("C:\Users\%username%\Desktop\Mining\Siacoin\3.3.3\win64\resources\app\Sia\" & 'siac renter upload "F:\UnSorted MotoX Pictures\DCIM\Camera\' & $fileName & '" ' & $fileName & @CRLF)
+   Local $response = RunWait(@ComSpec & " /c " & "C:\Users\%username%\Desktop\Mining\Siacoin\3.3.3\win64\resources\app\Sia\" & 'siac renter upload "F:\UnSorted MotoX Pictures\DCIM\Camera\' & $fileName & '" ' & $fileName)
+
+
+   ConsoleWrite("C:\Users\%username%\Desktop\Mining\Siacoin\3.3.3\win64\resources\app\Sia\" & 'siac renter upload "F:\UnSorted MotoX Pictures\DCIM\Camera\' & $fileName & '" ' & $fileName & @CRLF & "Waiting 5 minutes to next upload" & @CRLF)
+
+	  ConsoleWrite($response & "Waiting 5 minutes" & @CRLF)
+	  Sleep(600000)
+
 ;~    FileWrite($logFile,$command)
 
 Next
